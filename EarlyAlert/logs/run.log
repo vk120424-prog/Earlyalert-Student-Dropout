@@ -1,0 +1,661 @@
+2026-10-30 20:57:45,764 [INFO] load_data: Initiating download for UCI Dataset ID 697 ('Predict Students' Dropout and Academic Success')...
+2026-10-30 20:57:50,238 [INFO] load_data: Dataset successfully retrieved via ucimlrepo package.
+2026-10-30 20:57:50,321 [INFO] load_data: Raw dataset saved to: data/raw\student_dropout.csv (Shape: 4424 rows, 37 columns)
+2026-10-30 20:57:50,322 [INFO] load_data: Dataset metadata saved to: data/raw\dataset_metadata.json
+2026-10-30 20:57:50,324 [INFO] load_data: Target class distribution: {'Graduate': 2209, 'Dropout': 1421, 'Enrolled': 794}
+2026-10-30 20:59:06,357 [INFO] validate: Generating data audit and dictionary reports from data/raw/student_dropout.csv...
+2026-10-30 20:59:06,369 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 20:59:06,420 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 20:59:06,428 [INFO] validate: Audit summary: Initial rows = 4424, Duplicates = 0
+2026-10-30 20:59:06,457 [INFO] validate: Saved audit table to reports\audit_table.csv
+2026-10-30 20:59:06,469 [INFO] validate: Saved data dictionary to reports\data_dictionary.md
+2026-10-30 21:02:33,477 [INFO] features: Loading dataset from data/raw/student_dropout.csv for stratified split...
+2026-10-30 21:02:33,502 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:02:33,529 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:02:33,627 [INFO] features: Stratified split completed (seed=42, test_ratio=0.20):
+2026-10-30 21:02:33,627 [INFO] features:   Training set size: 3539 samples
+2026-10-30 21:02:33,631 [INFO] features:   Holdout test set size: 885 samples
+2026-10-30 21:02:33,636 [INFO] features:   Train class distribution: {'Graduate': 1767, 'Dropout': 1137, 'Enrolled': 635}
+2026-10-30 21:02:33,639 [INFO] features:   Test class distribution: {'Graduate': 442, 'Dropout': 284, 'Enrolled': 159}
+2026-10-30 21:04:41,049 [INFO] matplotlib.font_manager: generated new fontManager
+2026-10-30 21:05:11,849 [INFO] train: Deterministic random seed set to: 42
+2026-10-30 21:05:11,851 [INFO] features: Loading dataset from data/raw/student_dropout.csv for stratified split...
+2026-10-30 21:05:11,859 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:05:11,875 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:05:11,927 [INFO] features: Stratified split completed (seed=42, test_ratio=0.20):
+2026-10-30 21:05:11,927 [INFO] features:   Training set size: 3539 samples
+2026-10-30 21:05:11,930 [INFO] features:   Holdout test set size: 885 samples
+2026-10-30 21:05:11,932 [INFO] features:   Train class distribution: {'Graduate': 1767, 'Dropout': 1137, 'Enrolled': 635}
+2026-10-30 21:05:11,933 [INFO] features:   Test class distribution: {'Graduate': 442, 'Dropout': 284, 'Enrolled': 159}
+2026-10-30 21:05:11,934 [INFO] train: --- STARTING 5-FOLD STRATIFIED HYPERPARAMETER TUNING ARENA ---
+2026-10-30 21:05:11,934 [INFO] train: Tuning model: Dummy (Most Frequent) ...
+2026-10-30 21:05:16,477 [INFO] train:   Dummy (Most Frequent) Best 5-Fold CV Macro-F1: 0.2220 | Best Params: {}
+2026-10-30 21:05:16,512 [INFO] train: Tuning model: Logistic Regression (Balanced) ...
+2026-10-30 21:05:24,507 [INFO] train:   Logistic Regression (Balanced) Best 5-Fold CV Macro-F1: 0.7109 | Best Params: {'classifier__C': 0.05, 'classifier__solver': 'lbfgs'}
+2026-10-30 21:05:24,537 [INFO] train: Tuning model: Random Forest ...
+2026-10-30 21:06:02,431 [INFO] train:   Random Forest Best 5-Fold CV Macro-F1: 0.7217 | Best Params: {'classifier__class_weight': 'balanced', 'classifier__max_depth': None, 'classifier__min_samples_split': 2, 'classifier__n_estimators': 100}
+2026-10-30 21:06:02,607 [INFO] train: Tuning model: Hist Gradient Boosting ...
+2026-10-30 21:08:47,179 [INFO] train:   Hist Gradient Boosting Best 5-Fold CV Macro-F1: 0.7140 | Best Params: {'classifier__learning_rate': 0.05, 'classifier__max_depth': 6, 'classifier__max_iter': 100}
+2026-10-30 21:08:47,240 [INFO] train: Saved complete hyperparameter tuning log to: reports\tuning_log.csv (41 trials recorded)
+2026-10-30 21:08:47,245 [INFO] train: Saved holdout model comparison table to: reports\model_comparison.csv
+2026-10-30 21:08:47,245 [INFO] train: Champion Model Selected: 'Random Forest' (Holdout Macro-F1: 0.7056, Dropout Recall: 0.7289)
+2026-10-30 21:08:48,667 [WARNING] matplotlib.font_manager: findfont: Failed to find font weight semibold for DejaVu Sans, now using 700.
+2026-10-30 21:08:50,729 [INFO] evaluate: Saved confusion matrix figures to reports\figures
+2026-10-30 21:08:50,802 [INFO] train: Champion model ('Random Forest') persisted to models\model.joblib
+2026-10-30 21:08:50,804 [INFO] evaluate: Executing FR-05 subgroup diagnostics on holdout test set...
+2026-10-30 21:08:51,069 [INFO] evaluate: Saved subgroup diagnostics table to reports\subgroup_analysis.csv
+2026-10-30 21:08:51,071 [INFO] evaluate: Conducting FR-05 error analysis on misclassified student records...
+2026-10-30 21:08:51,231 [INFO] evaluate: Total holdout misclassifications: 216 out of 885 (24.41%)
+2026-10-30 21:08:51,235 [INFO] evaluate: Saved error analysis to reports\error_analysis.md
+2026-10-30 21:08:51,235 [INFO] train: --- RUNNING LEAKAGE EXPERIMENT: Sem-1 Features vs Sem-2 Features ---
+2026-10-30 21:08:51,237 [INFO] features: Loading dataset from data/raw/student_dropout.csv for stratified split...
+2026-10-30 21:08:51,247 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:08:51,262 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:08:51,273 [INFO] features: Stratified split completed (seed=42, test_ratio=0.20):
+2026-10-30 21:08:51,273 [INFO] features:   Training set size: 3539 samples
+2026-10-30 21:08:51,273 [INFO] features:   Holdout test set size: 885 samples
+2026-10-30 21:08:51,275 [INFO] features:   Train class distribution: {'Graduate': 1767, 'Dropout': 1137, 'Enrolled': 635}
+2026-10-30 21:08:51,277 [INFO] features:   Test class distribution: {'Graduate': 442, 'Dropout': 284, 'Enrolled': 159}
+2026-10-30 21:08:52,037 [INFO] train: Leakage Run 1 (Enrolment + Sem-1 Only) -> Macro-F1: 0.5622, Dropout Recall: 0.7254, Accuracy: 0.7175
+2026-10-30 21:08:52,037 [INFO] features: Loading dataset from data/raw/student_dropout.csv for stratified split...
+2026-10-30 21:08:52,046 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:08:52,057 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:08:52,066 [INFO] features: Stratified split completed (seed=42, test_ratio=0.20):
+2026-10-30 21:08:52,066 [INFO] features:   Training set size: 3539 samples
+2026-10-30 21:08:52,066 [INFO] features:   Holdout test set size: 885 samples
+2026-10-30 21:08:52,070 [INFO] features:   Train class distribution: {'Graduate': 1767, 'Dropout': 1137, 'Enrolled': 635}
+2026-10-30 21:08:52,072 [INFO] features:   Test class distribution: {'Graduate': 442, 'Dropout': 284, 'Enrolled': 159}
+2026-10-30 21:08:52,991 [INFO] train: Leakage Run 2 (Full Enrolment + Sem-1 + Sem-2) -> Macro-F1: 0.6364, Dropout Recall: 0.7676, Accuracy: 0.7537
+2026-10-30 21:08:52,994 [INFO] train: Saved leakage experiment conclusion to reports\leakage_experiment.md
+2026-10-30 21:08:53,619 [INFO] evaluate: Saved pipeline architecture diagram to reports\figures\pipeline.png
+2026-10-30 21:11:01,133 [INFO] predict: Inference completed successfully: Predicted='Dropout', Dropout Prob=92.00%, Tier='HIGH RISK (Immediate Intervention Required)'
+2026-10-30 21:11:14,015 [INFO] predict: Inference completed successfully: Predicted='Graduate', Dropout Prob=8.00%, Tier='LOW RISK (Normal Academic Progress)'
+2026-10-30 21:11:23,637 [ERROR] predict: Inference validation rejected record:
+Student record validation failed with 35 error(s):
+  - Missing required field: 'Application order'
+  - Missing required field: 'Daytime/evening attendance'
+  - Missing required field: 'Previous qualification'
+  - Missing required field: 'Nacionality'
+  - Missing required field: 'Mother's qualification'
+  - Missing required field: 'Father's qualification'
+  - Missing required field: 'Mother's occupation'
+  - Missing required field: 'Father's occupation'
+  - Missing required field: 'Displaced'
+  - Missing required field: 'Educational special needs'
+  - Missing required field: 'Debtor'
+  - Missing required field: 'Tuition fees up to date'
+  - Missing required field: 'Scholarship holder'
+  - Missing required field: 'International'
+  - Missing required field: 'Previous qualification (grade)'
+  - Missing required field: 'Curricular units 1st sem (credited)'
+  - Missing required field: 'Curricular units 1st sem (enrolled)'
+  - Missing required field: 'Curricular units 1st sem (evaluations)'
+  - Missing required field: 'Curricular units 1st sem (approved)'
+  - Missing required field: 'Curricular units 1st sem (grade)'
+  - Missing required field: 'Curricular units 1st sem (without evaluations)'
+  - Missing required field: 'Curricular units 2nd sem (credited)'
+  - Missing required field: 'Curricular units 2nd sem (enrolled)'
+  - Missing required field: 'Curricular units 2nd sem (evaluations)'
+  - Missing required field: 'Curricular units 2nd sem (approved)'
+  - Missing required field: 'Curricular units 2nd sem (grade)'
+  - Missing required field: 'Curricular units 2nd sem (without evaluations)'
+  - Missing required field: 'Unemployment rate'
+  - Missing required field: 'Inflation rate'
+  - Missing required field: 'GDP'
+  - Field 'Marital Status' value 999 is out of allowable range [1, 6].
+  - Field 'Admission grade' value 250.0 is out of allowable range [0.0, 200.0].
+  - Field 'Age at enrollment' value -5 is out of allowable range [15, 100].
+  - Field 'Gender' value 3 is out of allowable range [0, 1].
+  - Binary field 'Gender' must be 0 or 1, got 3.
+2026-10-30 21:14:48,172 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:14:48,181 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:14:48,323 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:14:48,332 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:14:48,822 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:14:48,822 [INFO] validate: Schema and data bounds validation PASSED successfully for 50 records.
+2026-10-30 21:14:48,840 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:14:48,840 [ERROR] validate: Missing required column(s): ['Course']
+2026-10-30 21:14:48,840 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Course']
+2026-10-30 21:14:48,853 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:14:48,853 [ERROR] validate: Missing required 'Target' column for training/audit data.
+2026-10-30 21:14:48,853 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required 'Target' column for training/audit data.
+2026-10-30 21:14:48,867 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:14:48,874 [ERROR] validate: Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:14:48,875 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:14:48,889 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:14:48,897 [ERROR] validate: Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:14:48,902 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:14:48,921 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:14:48,921 [ERROR] validate: Target contains invalid classes: {'Expelled'}. Allowed: {'Graduate', 'Dropout', 'Enrolled'}
+2026-10-30 21:14:48,921 [CRITICAL] validate: Schema validation failed on column presence:
+Target contains invalid classes: {'Expelled'}. Allowed: {'Graduate', 'Dropout', 'Enrolled'}
+2026-10-30 21:14:48,952 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:14:48,970 [ERROR] validate: Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+2026-10-30 21:14:48,970 [ERROR] validate: Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:14:48,973 [CRITICAL] validate: Data validation failed with 2 error(s):
+Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:14:48,990 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:14:48,990 [ERROR] validate: Missing required column(s): ['Displaced']
+2026-10-30 21:14:48,991 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Displaced']
+2026-10-30 21:17:28,946 [INFO] load_data: Initiating download for UCI Dataset ID 697 ('Predict Students' Dropout and Academic Success')...
+2026-10-30 21:17:50,378 [INFO] load_data: Dataset successfully retrieved via ucimlrepo package.
+2026-10-30 21:17:50,441 [INFO] load_data: Raw dataset saved to: data/raw\student_dropout.csv (Shape: 4424 rows, 37 columns)
+2026-10-30 21:17:50,444 [INFO] load_data: Dataset metadata saved to: data/raw\dataset_metadata.json
+2026-10-30 21:17:50,446 [INFO] load_data: Target class distribution: {'Graduate': 2209, 'Dropout': 1421, 'Enrolled': 794}
+2026-10-30 21:17:51,617 [INFO] validate: Generating data audit and dictionary reports from data/raw/student_dropout.csv...
+2026-10-30 21:17:51,624 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:17:51,634 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:17:51,639 [INFO] validate: Audit summary: Initial rows = 4424, Duplicates = 0
+2026-10-30 21:17:51,659 [INFO] validate: Saved audit table to reports\audit_table.csv
+2026-10-30 21:17:51,667 [INFO] validate: Saved data dictionary to reports\data_dictionary.md
+2026-10-30 21:17:55,379 [INFO] train: Deterministic random seed set to: 42
+2026-10-30 21:17:55,379 [INFO] features: Loading dataset from data/raw/student_dropout.csv for stratified split...
+2026-10-30 21:17:55,401 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:17:55,401 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:17:55,414 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:17:55,414 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:17:55,454 [INFO] features: Stratified split completed (seed=42, test_ratio=0.20):
+2026-10-30 21:17:55,454 [INFO] features:   Training set size: 3539 samples
+2026-10-30 21:17:55,454 [INFO] features:   Holdout test set size: 885 samples
+2026-10-30 21:17:55,457 [INFO] features:   Train class distribution: {'Graduate': 1767, 'Dropout': 1137, 'Enrolled': 635}
+2026-10-30 21:17:55,457 [INFO] features:   Test class distribution: {'Graduate': 442, 'Dropout': 284, 'Enrolled': 159}
+2026-10-30 21:17:55,458 [INFO] train: --- STARTING 5-FOLD STRATIFIED HYPERPARAMETER TUNING ARENA ---
+2026-10-30 21:17:55,458 [INFO] train: Tuning model: Dummy (Most Frequent) ...
+2026-10-30 21:17:59,921 [INFO] train:   Dummy (Most Frequent) Best 5-Fold CV Macro-F1: 0.2220 | Best Params: {}
+2026-10-30 21:17:59,952 [INFO] train: Tuning model: Logistic Regression (Balanced) ...
+2026-10-30 21:18:06,359 [INFO] train:   Logistic Regression (Balanced) Best 5-Fold CV Macro-F1: 0.7109 | Best Params: {'classifier__C': 0.05, 'classifier__solver': 'lbfgs'}
+2026-10-30 21:18:06,386 [INFO] train: Tuning model: Random Forest ...
+2026-10-30 21:18:32,074 [INFO] train:   Random Forest Best 5-Fold CV Macro-F1: 0.7217 | Best Params: {'classifier__class_weight': 'balanced', 'classifier__max_depth': None, 'classifier__min_samples_split': 2, 'classifier__n_estimators': 100}
+2026-10-30 21:18:32,173 [INFO] train: Tuning model: Hist Gradient Boosting ...
+2026-10-30 21:22:17,803 [INFO] train:   Hist Gradient Boosting Best 5-Fold CV Macro-F1: 0.7140 | Best Params: {'classifier__learning_rate': 0.05, 'classifier__max_depth': 6, 'classifier__max_iter': 100}
+2026-10-30 21:22:17,859 [INFO] train: Saved complete hyperparameter tuning log to: reports\tuning_log.csv (41 trials recorded)
+2026-10-30 21:22:17,863 [INFO] train: Saved holdout model comparison table to: reports\model_comparison.csv
+2026-10-30 21:22:17,864 [INFO] train: Champion Model Selected: 'Random Forest' (Holdout Macro-F1: 0.7056, Dropout Recall: 0.7289)
+2026-10-30 21:22:18,319 [WARNING] matplotlib.font_manager: findfont: Failed to find font weight semibold for DejaVu Sans, now using 700.
+2026-10-30 21:22:20,054 [INFO] evaluate: Saved confusion matrix figures to reports\figures
+2026-10-30 21:22:20,114 [INFO] train: Champion model ('Random Forest') persisted to models\model.joblib
+2026-10-30 21:22:20,115 [INFO] evaluate: Executing FR-05 subgroup diagnostics on holdout test set...
+2026-10-30 21:22:20,348 [INFO] evaluate: Saved subgroup diagnostics table to reports\subgroup_analysis.csv
+2026-10-30 21:22:20,348 [INFO] evaluate: Conducting FR-05 error analysis on misclassified student records...
+2026-10-30 21:22:20,467 [INFO] evaluate: Total holdout misclassifications: 216 out of 885 (24.41%)
+2026-10-30 21:22:20,471 [INFO] evaluate: Saved error analysis to reports\error_analysis.md
+2026-10-30 21:22:20,471 [INFO] train: --- RUNNING LEAKAGE EXPERIMENT: Sem-1 Features vs Sem-2 Features ---
+2026-10-30 21:22:20,472 [INFO] features: Loading dataset from data/raw/student_dropout.csv for stratified split...
+2026-10-30 21:22:20,482 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:22:20,482 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:22:20,491 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:22:20,491 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:22:20,502 [INFO] features: Stratified split completed (seed=42, test_ratio=0.20):
+2026-10-30 21:22:20,502 [INFO] features:   Training set size: 3539 samples
+2026-10-30 21:22:20,502 [INFO] features:   Holdout test set size: 885 samples
+2026-10-30 21:22:20,503 [INFO] features:   Train class distribution: {'Graduate': 1767, 'Dropout': 1137, 'Enrolled': 635}
+2026-10-30 21:22:20,504 [INFO] features:   Test class distribution: {'Graduate': 442, 'Dropout': 284, 'Enrolled': 159}
+2026-10-30 21:22:21,094 [INFO] train: Leakage Run 1 (Enrolment + Sem-1 Only) -> Macro-F1: 0.5622, Dropout Recall: 0.7254, Accuracy: 0.7175
+2026-10-30 21:22:21,094 [INFO] features: Loading dataset from data/raw/student_dropout.csv for stratified split...
+2026-10-30 21:22:21,105 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:22:21,105 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:22:21,116 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:22:21,116 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:22:21,126 [INFO] features: Stratified split completed (seed=42, test_ratio=0.20):
+2026-10-30 21:22:21,126 [INFO] features:   Training set size: 3539 samples
+2026-10-30 21:22:21,126 [INFO] features:   Holdout test set size: 885 samples
+2026-10-30 21:22:21,128 [INFO] features:   Train class distribution: {'Graduate': 1767, 'Dropout': 1137, 'Enrolled': 635}
+2026-10-30 21:22:21,129 [INFO] features:   Test class distribution: {'Graduate': 442, 'Dropout': 284, 'Enrolled': 159}
+2026-10-30 21:22:21,729 [INFO] train: Leakage Run 2 (Full Enrolment + Sem-1 + Sem-2) -> Macro-F1: 0.6364, Dropout Recall: 0.7676, Accuracy: 0.7537
+2026-10-30 21:22:21,734 [INFO] train: Saved leakage experiment conclusion to reports\leakage_experiment.md
+2026-10-30 21:22:22,080 [INFO] evaluate: Saved pipeline architecture diagram to reports\figures\pipeline.png
+2026-10-30 21:22:26,460 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:22:26,471 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:22:26,605 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:22:26,614 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:22:27,089 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:22:27,107 [INFO] validate: Schema and data bounds validation PASSED successfully for 50 records.
+2026-10-30 21:22:27,122 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:22:27,123 [ERROR] validate: Missing required column(s): ['Course']
+2026-10-30 21:22:27,123 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Course']
+2026-10-30 21:22:27,136 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:22:27,136 [ERROR] validate: Missing required 'Target' column for training/audit data.
+2026-10-30 21:22:27,136 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required 'Target' column for training/audit data.
+2026-10-30 21:22:27,150 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:22:27,154 [ERROR] validate: Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:22:27,154 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:22:27,170 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:22:27,174 [ERROR] validate: Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:22:27,174 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:22:27,192 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:22:27,192 [ERROR] validate: Target contains invalid classes: {'Expelled'}. Allowed: {'Graduate', 'Dropout', 'Enrolled'}
+2026-10-30 21:22:27,192 [CRITICAL] validate: Schema validation failed on column presence:
+Target contains invalid classes: {'Expelled'}. Allowed: {'Graduate', 'Dropout', 'Enrolled'}
+2026-10-30 21:22:27,204 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:22:27,209 [ERROR] validate: Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+2026-10-30 21:22:27,209 [ERROR] validate: Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:22:27,213 [CRITICAL] validate: Data validation failed with 2 error(s):
+Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:22:27,224 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:22:27,224 [ERROR] validate: Missing required column(s): ['Displaced']
+2026-10-30 21:22:27,225 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Displaced']
+2026-10-30 21:22:30,515 [INFO] predict: Inference completed successfully: Predicted='Dropout', Dropout Prob=92.00%, Tier='HIGH RISK (Immediate Intervention Required)'
+2026-10-30 21:25:28,495 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:25:28,509 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:25:28,656 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:25:28,667 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:25:29,181 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:25:29,190 [INFO] validate: Schema and data bounds validation PASSED successfully for 50 records.
+2026-10-30 21:25:29,204 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:25:29,204 [ERROR] validate: Missing required column(s): ['Course']
+2026-10-30 21:25:29,204 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Course']
+2026-10-30 21:25:29,218 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:25:29,218 [ERROR] validate: Missing required 'Target' column for training/audit data.
+2026-10-30 21:25:29,218 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required 'Target' column for training/audit data.
+2026-10-30 21:25:29,232 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:25:29,239 [ERROR] validate: Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:25:29,241 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:25:29,257 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:25:29,262 [ERROR] validate: Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:25:29,266 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:25:29,282 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:25:29,282 [ERROR] validate: Target contains invalid classes: {'Expelled'}. Allowed: {'Enrolled', 'Graduate', 'Dropout'}
+2026-10-30 21:25:29,282 [CRITICAL] validate: Schema validation failed on column presence:
+Target contains invalid classes: {'Expelled'}. Allowed: {'Enrolled', 'Graduate', 'Dropout'}
+2026-10-30 21:25:29,296 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:25:29,298 [ERROR] validate: Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+2026-10-30 21:25:29,298 [ERROR] validate: Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:25:29,303 [CRITICAL] validate: Data validation failed with 2 error(s):
+Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:25:29,317 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:25:29,317 [ERROR] validate: Missing required column(s): ['Displaced']
+2026-10-30 21:25:29,320 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Displaced']
+2026-10-30 21:25:58,315 [INFO] predict: Inference completed successfully: Predicted='Dropout', Dropout Prob=92.00%, Tier='HIGH RISK (Immediate Intervention Required)'
+2026-10-30 21:26:10,154 [INFO] predict: Inference completed successfully: Predicted='Graduate', Dropout Prob=8.00%, Tier='LOW RISK (Normal Academic Progress)'
+2026-10-30 21:26:19,118 [ERROR] predict: Inference validation rejected record:
+Student record validation failed with 35 error(s):
+  - Missing required field: 'Application order'
+  - Missing required field: 'Daytime/evening attendance'
+  - Missing required field: 'Previous qualification'
+  - Missing required field: 'Nacionality'
+  - Missing required field: 'Mother's qualification'
+  - Missing required field: 'Father's qualification'
+  - Missing required field: 'Mother's occupation'
+  - Missing required field: 'Father's occupation'
+  - Missing required field: 'Displaced'
+  - Missing required field: 'Educational special needs'
+  - Missing required field: 'Debtor'
+  - Missing required field: 'Tuition fees up to date'
+  - Missing required field: 'Scholarship holder'
+  - Missing required field: 'International'
+  - Missing required field: 'Previous qualification (grade)'
+  - Missing required field: 'Curricular units 1st sem (credited)'
+  - Missing required field: 'Curricular units 1st sem (enrolled)'
+  - Missing required field: 'Curricular units 1st sem (evaluations)'
+  - Missing required field: 'Curricular units 1st sem (approved)'
+  - Missing required field: 'Curricular units 1st sem (grade)'
+  - Missing required field: 'Curricular units 1st sem (without evaluations)'
+  - Missing required field: 'Curricular units 2nd sem (credited)'
+  - Missing required field: 'Curricular units 2nd sem (enrolled)'
+  - Missing required field: 'Curricular units 2nd sem (evaluations)'
+  - Missing required field: 'Curricular units 2nd sem (approved)'
+  - Missing required field: 'Curricular units 2nd sem (grade)'
+  - Missing required field: 'Curricular units 2nd sem (without evaluations)'
+  - Missing required field: 'Unemployment rate'
+  - Missing required field: 'Inflation rate'
+  - Missing required field: 'GDP'
+  - Field 'Marital Status' value 999 is out of allowable range [1, 6].
+  - Field 'Admission grade' value 250.0 is out of allowable range [0.0, 200.0].
+  - Field 'Age at enrollment' value -5 is out of allowable range [15, 100].
+  - Field 'Gender' value 3 is out of allowable range [0, 1].
+  - Binary field 'Gender' must be 0 or 1, got 3.
+2026-10-30 21:27:17,639 [INFO] validate: Generating data audit and dictionary reports from data/raw/student_dropout.csv...
+2026-10-30 21:27:17,645 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:27:17,658 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:27:17,666 [INFO] validate: Audit summary: Initial rows = 4424, Duplicates = 0
+2026-10-30 21:27:17,689 [INFO] validate: Saved audit table to reports\audit_table.csv
+2026-10-30 21:27:17,694 [INFO] validate: Saved data dictionary to reports\data_dictionary.md
+2026-10-30 21:32:26,328 [INFO] database: Database schema initialized at C:\Users\devad\OneDrive\Desktop\EarlyAlert\data\earlyalert.db
+2026-10-30 21:32:26,344 [INFO] database: Database already contains 1000 student records. Skipping seeding.
+2026-10-30 21:32:26,345 [INFO] app: EarlyAlert FastAPI backend initialized and connected to database.
+2026-10-30 21:33:00,828 [INFO] predict: Inference completed successfully: Predicted='Dropout', Dropout Prob=92.00%, Tier='HIGH RISK (Immediate Intervention Required)'
+2026-10-30 21:36:56,008 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:36:56,020 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:36:56,140 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:36:56,150 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:36:56,511 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:36:56,520 [INFO] validate: Schema and data bounds validation PASSED successfully for 50 records.
+2026-10-30 21:36:56,536 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:36:56,536 [ERROR] validate: Missing required column(s): ['Course']
+2026-10-30 21:36:56,538 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Course']
+2026-10-30 21:36:56,553 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:36:56,592 [ERROR] validate: Missing required 'Target' column for training/audit data.
+2026-10-30 21:36:56,592 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required 'Target' column for training/audit data.
+2026-10-30 21:36:56,607 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:36:56,612 [ERROR] validate: Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:36:56,615 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:36:56,700 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:36:56,706 [ERROR] validate: Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:36:56,710 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:36:56,730 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:36:56,732 [ERROR] validate: Target contains invalid classes: {'Expelled'}. Allowed: {'Enrolled', 'Graduate', 'Dropout'}
+2026-10-30 21:36:56,733 [CRITICAL] validate: Schema validation failed on column presence:
+Target contains invalid classes: {'Expelled'}. Allowed: {'Enrolled', 'Graduate', 'Dropout'}
+2026-10-30 21:36:56,763 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:36:56,766 [ERROR] validate: Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+2026-10-30 21:36:56,766 [ERROR] validate: Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:36:56,772 [CRITICAL] validate: Data validation failed with 2 error(s):
+Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:36:56,789 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:36:56,789 [ERROR] validate: Missing required column(s): ['Displaced']
+2026-10-30 21:36:56,791 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Displaced']
+2026-10-30 21:37:50,113 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:37:50,120 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:37:50,248 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:37:50,258 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:37:50,601 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:37:50,606 [INFO] validate: Schema and data bounds validation PASSED successfully for 50 records.
+2026-10-30 21:37:50,623 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:37:50,623 [ERROR] validate: Missing required column(s): ['Course']
+2026-10-30 21:37:50,624 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Course']
+2026-10-30 21:37:50,635 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:37:50,636 [ERROR] validate: Missing required 'Target' column for training/audit data.
+2026-10-30 21:37:50,636 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required 'Target' column for training/audit data.
+2026-10-30 21:37:50,650 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:37:50,653 [ERROR] validate: Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:37:50,657 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:37:50,670 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:37:50,673 [ERROR] validate: Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:37:50,676 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:37:50,687 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:37:50,687 [ERROR] validate: Target contains invalid classes: {'Expelled'}. Allowed: {'Dropout', 'Graduate', 'Enrolled'}
+2026-10-30 21:37:50,687 [CRITICAL] validate: Schema validation failed on column presence:
+Target contains invalid classes: {'Expelled'}. Allowed: {'Dropout', 'Graduate', 'Enrolled'}
+2026-10-30 21:37:50,702 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:37:50,705 [ERROR] validate: Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+2026-10-30 21:37:50,705 [ERROR] validate: Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:37:50,706 [CRITICAL] validate: Data validation failed with 2 error(s):
+Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:37:50,721 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:37:50,721 [ERROR] validate: Missing required column(s): ['Displaced']
+2026-10-30 21:37:50,721 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Displaced']
+2026-10-30 21:38:21,440 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:38:21,448 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:38:21,584 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:38:21,594 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:38:22,004 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:38:22,007 [INFO] validate: Schema and data bounds validation PASSED successfully for 50 records.
+2026-10-30 21:38:22,023 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:38:22,023 [ERROR] validate: Missing required column(s): ['Course']
+2026-10-30 21:38:22,024 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Course']
+2026-10-30 21:38:22,037 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:38:22,037 [ERROR] validate: Missing required 'Target' column for training/audit data.
+2026-10-30 21:38:22,037 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required 'Target' column for training/audit data.
+2026-10-30 21:38:22,048 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:38:22,054 [ERROR] validate: Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:38:22,054 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:38:22,068 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:38:22,073 [ERROR] validate: Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:38:22,076 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:38:22,090 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:38:22,090 [ERROR] validate: Target contains invalid classes: {'Expelled'}. Allowed: {'Enrolled', 'Graduate', 'Dropout'}
+2026-10-30 21:38:22,090 [CRITICAL] validate: Schema validation failed on column presence:
+Target contains invalid classes: {'Expelled'}. Allowed: {'Enrolled', 'Graduate', 'Dropout'}
+2026-10-30 21:38:22,101 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:38:22,104 [ERROR] validate: Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+2026-10-30 21:38:22,104 [ERROR] validate: Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:38:22,109 [CRITICAL] validate: Data validation failed with 2 error(s):
+Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:38:22,123 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:38:22,123 [ERROR] validate: Missing required column(s): ['Displaced']
+2026-10-30 21:38:22,123 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Displaced']
+2026-10-30 21:40:02,967 [INFO] predict: Inference completed successfully: Predicted='Dropout', Dropout Prob=92.00%, Tier='HIGH RISK (Immediate Intervention Required)'
+2026-10-30 21:42:28,576 [INFO] database: Database schema initialized at C:\Users\devad\OneDrive\Desktop\EarlyAlert\data\earlyalert.db
+2026-10-30 21:42:28,596 [INFO] database: Database already contains 1002 student records. Skipping seeding.
+2026-10-30 21:42:28,596 [INFO] app: EarlyAlert FastAPI backend initialized and connected to database.
+2026-10-30 21:42:43,787 [INFO] predict: Inference completed successfully: Predicted='Dropout', Dropout Prob=92.00%, Tier='HIGH RISK (Immediate Intervention Required)'
+2026-10-30 21:42:58,108 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:42:58,115 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:42:58,263 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:42:58,276 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:42:58,660 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:42:58,666 [INFO] validate: Schema and data bounds validation PASSED successfully for 50 records.
+2026-10-30 21:42:58,680 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:42:58,680 [ERROR] validate: Missing required column(s): ['Course']
+2026-10-30 21:42:58,680 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Course']
+2026-10-30 21:42:58,694 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:42:58,694 [ERROR] validate: Missing required 'Target' column for training/audit data.
+2026-10-30 21:42:58,694 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required 'Target' column for training/audit data.
+2026-10-30 21:42:58,708 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:42:58,713 [ERROR] validate: Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:42:58,713 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:42:58,729 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:42:58,733 [ERROR] validate: Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:42:58,736 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:42:58,750 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:42:58,751 [ERROR] validate: Target contains invalid classes: {'Expelled'}. Allowed: {'Dropout', 'Graduate', 'Enrolled'}
+2026-10-30 21:42:58,751 [CRITICAL] validate: Schema validation failed on column presence:
+Target contains invalid classes: {'Expelled'}. Allowed: {'Dropout', 'Graduate', 'Enrolled'}
+2026-10-30 21:42:58,764 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:42:58,766 [ERROR] validate: Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+2026-10-30 21:42:58,766 [ERROR] validate: Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:42:58,772 [CRITICAL] validate: Data validation failed with 2 error(s):
+Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:42:58,786 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:42:58,786 [ERROR] validate: Missing required column(s): ['Displaced']
+2026-10-30 21:42:58,787 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Displaced']
+2026-10-30 21:45:00,701 [INFO] load_data: Initiating download for UCI Dataset ID 697 ('Predict Students' Dropout and Academic Success')...
+2026-10-30 21:45:09,193 [INFO] load_data: Dataset successfully retrieved via ucimlrepo package.
+2026-10-30 21:45:09,264 [INFO] load_data: Raw dataset saved to: data/raw\student_dropout.csv (Shape: 4424 rows, 37 columns)
+2026-10-30 21:45:09,265 [INFO] load_data: Dataset metadata saved to: data/raw\dataset_metadata.json
+2026-10-30 21:45:09,267 [INFO] load_data: Target class distribution: {'Graduate': 2209, 'Dropout': 1421, 'Enrolled': 794}
+2026-10-30 21:45:10,396 [INFO] validate: Generating data audit and dictionary reports from data/raw/student_dropout.csv...
+2026-10-30 21:45:10,409 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:45:10,422 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:45:10,430 [INFO] validate: Audit summary: Initial rows = 4424, Duplicates = 0
+2026-10-30 21:45:10,456 [INFO] validate: Saved audit table to reports\audit_table.csv
+2026-10-30 21:45:10,460 [INFO] validate: Saved data dictionary to reports\data_dictionary.md
+2026-10-30 21:45:14,442 [INFO] train: Deterministic random seed set to: 42
+2026-10-30 21:45:14,444 [INFO] features: Loading dataset from data/raw/student_dropout.csv for stratified split...
+2026-10-30 21:45:14,468 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:45:14,468 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:45:14,483 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:45:14,483 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:45:14,521 [INFO] features: Stratified split completed (seed=42, test_ratio=0.20):
+2026-10-30 21:45:14,521 [INFO] features:   Training set size: 3539 samples
+2026-10-30 21:45:14,521 [INFO] features:   Holdout test set size: 885 samples
+2026-10-30 21:45:14,521 [INFO] features:   Train class distribution: {'Graduate': 1767, 'Dropout': 1137, 'Enrolled': 635}
+2026-10-30 21:45:14,521 [INFO] features:   Test class distribution: {'Graduate': 442, 'Dropout': 284, 'Enrolled': 159}
+2026-10-30 21:45:14,521 [INFO] train: --- STARTING 5-FOLD STRATIFIED HYPERPARAMETER TUNING ARENA ---
+2026-10-30 21:45:14,521 [INFO] train: Tuning model: Dummy (Most Frequent) ...
+2026-10-30 21:45:18,718 [INFO] train:   Dummy (Most Frequent) Best 5-Fold CV Macro-F1: 0.2220 | Best Params: {}
+2026-10-30 21:45:18,761 [INFO] train: Tuning model: Logistic Regression (Balanced) ...
+2026-10-30 21:45:25,258 [INFO] train:   Logistic Regression (Balanced) Best 5-Fold CV Macro-F1: 0.7109 | Best Params: {'classifier__C': 0.05, 'classifier__solver': 'lbfgs'}
+2026-10-30 21:45:25,288 [INFO] train: Tuning model: Random Forest ...
+2026-10-30 21:45:52,061 [INFO] train:   Random Forest Best 5-Fold CV Macro-F1: 0.7217 | Best Params: {'classifier__class_weight': 'balanced', 'classifier__max_depth': None, 'classifier__min_samples_split': 2, 'classifier__n_estimators': 100}
+2026-10-30 21:45:52,214 [INFO] train: Tuning model: Hist Gradient Boosting ...
+2026-10-30 21:46:10,810 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:46:10,830 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:46:11,261 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:46:11,296 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:46:13,675 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:46:13,687 [INFO] validate: Schema and data bounds validation PASSED successfully for 50 records.
+2026-10-30 21:46:13,894 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:46:13,894 [ERROR] validate: Missing required column(s): ['Course']
+2026-10-30 21:46:13,896 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Course']
+2026-10-30 21:46:14,068 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:46:14,070 [ERROR] validate: Missing required 'Target' column for training/audit data.
+2026-10-30 21:46:14,072 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required 'Target' column for training/audit data.
+2026-10-30 21:46:14,140 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:46:14,149 [ERROR] validate: Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:46:14,154 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:46:14,300 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:46:14,308 [ERROR] validate: Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:46:14,312 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:46:14,531 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:46:14,533 [ERROR] validate: Target contains invalid classes: {'Expelled'}. Allowed: {'Enrolled', 'Dropout', 'Graduate'}
+2026-10-30 21:46:14,533 [CRITICAL] validate: Schema validation failed on column presence:
+Target contains invalid classes: {'Expelled'}. Allowed: {'Enrolled', 'Dropout', 'Graduate'}
+2026-10-30 21:46:14,683 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:46:14,692 [ERROR] validate: Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+2026-10-30 21:46:14,693 [ERROR] validate: Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:46:14,720 [CRITICAL] validate: Data validation failed with 2 error(s):
+Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:46:14,866 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:46:14,866 [ERROR] validate: Missing required column(s): ['Displaced']
+2026-10-30 21:46:14,868 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Displaced']
+2026-10-30 21:49:08,401 [INFO] train:   Hist Gradient Boosting Best 5-Fold CV Macro-F1: 0.7140 | Best Params: {'classifier__learning_rate': 0.05, 'classifier__max_depth': 6, 'classifier__max_iter': 100}
+2026-10-30 21:49:08,474 [INFO] train: Saved complete hyperparameter tuning log to: reports\tuning_log.csv (41 trials recorded)
+2026-10-30 21:49:08,481 [INFO] train: Saved holdout model comparison table to: reports\model_comparison.csv
+2026-10-30 21:49:08,481 [INFO] train: Champion Model Selected: 'Random Forest' (Holdout Macro-F1: 0.7056, Dropout Recall: 0.7289)
+2026-10-30 21:49:09,193 [WARNING] matplotlib.font_manager: findfont: Failed to find font weight semibold for DejaVu Sans, now using 700.
+2026-10-30 21:49:11,601 [INFO] evaluate: Saved confusion matrix figures to reports\figures
+2026-10-30 21:49:11,666 [INFO] train: Champion model ('Random Forest') persisted to models\model.joblib
+2026-10-30 21:49:11,669 [INFO] evaluate: Executing FR-05 subgroup diagnostics on holdout test set...
+2026-10-30 21:49:11,880 [INFO] evaluate: Saved subgroup diagnostics table to reports\subgroup_analysis.csv
+2026-10-30 21:49:11,882 [INFO] evaluate: Conducting FR-05 error analysis on misclassified student records...
+2026-10-30 21:49:11,999 [INFO] evaluate: Total holdout misclassifications: 216 out of 885 (24.41%)
+2026-10-30 21:49:12,003 [INFO] evaluate: Saved error analysis to reports\error_analysis.md
+2026-10-30 21:49:12,004 [INFO] train: --- RUNNING LEAKAGE EXPERIMENT: Sem-1 Features vs Sem-2 Features ---
+2026-10-30 21:49:12,004 [INFO] features: Loading dataset from data/raw/student_dropout.csv for stratified split...
+2026-10-30 21:49:12,012 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:49:12,012 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:49:12,021 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:49:12,021 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:49:12,029 [INFO] features: Stratified split completed (seed=42, test_ratio=0.20):
+2026-10-30 21:49:12,029 [INFO] features:   Training set size: 3539 samples
+2026-10-30 21:49:12,029 [INFO] features:   Holdout test set size: 885 samples
+2026-10-30 21:49:12,031 [INFO] features:   Train class distribution: {'Graduate': 1767, 'Dropout': 1137, 'Enrolled': 635}
+2026-10-30 21:49:12,031 [INFO] features:   Test class distribution: {'Graduate': 442, 'Dropout': 284, 'Enrolled': 159}
+2026-10-30 21:49:12,716 [INFO] train: Leakage Run 1 (Enrolment + Sem-1 Only) -> Macro-F1: 0.5622, Dropout Recall: 0.7254, Accuracy: 0.7175
+2026-10-30 21:49:12,716 [INFO] features: Loading dataset from data/raw/student_dropout.csv for stratified split...
+2026-10-30 21:49:12,726 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:49:12,726 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:49:12,741 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:49:12,741 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:49:12,751 [INFO] features: Stratified split completed (seed=42, test_ratio=0.20):
+2026-10-30 21:49:12,751 [INFO] features:   Training set size: 3539 samples
+2026-10-30 21:49:12,751 [INFO] features:   Holdout test set size: 885 samples
+2026-10-30 21:49:12,753 [INFO] features:   Train class distribution: {'Graduate': 1767, 'Dropout': 1137, 'Enrolled': 635}
+2026-10-30 21:49:12,753 [INFO] features:   Test class distribution: {'Graduate': 442, 'Dropout': 284, 'Enrolled': 159}
+2026-10-30 21:49:13,536 [INFO] train: Leakage Run 2 (Full Enrolment + Sem-1 + Sem-2) -> Macro-F1: 0.6364, Dropout Recall: 0.7676, Accuracy: 0.7537
+2026-10-30 21:49:13,538 [INFO] train: Saved leakage experiment conclusion to reports\leakage_experiment.md
+2026-10-30 21:49:13,921 [INFO] evaluate: Saved pipeline architecture diagram to reports\figures\pipeline.png
+2026-10-30 21:49:21,651 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:49:21,664 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:49:21,785 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:49:21,796 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:49:22,234 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:49:22,256 [INFO] validate: Schema and data bounds validation PASSED successfully for 50 records.
+2026-10-30 21:49:22,289 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:49:22,289 [ERROR] validate: Missing required column(s): ['Course']
+2026-10-30 21:49:22,290 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Course']
+2026-10-30 21:49:22,310 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:49:22,310 [ERROR] validate: Missing required 'Target' column for training/audit data.
+2026-10-30 21:49:22,310 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required 'Target' column for training/audit data.
+2026-10-30 21:49:22,323 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:49:22,330 [ERROR] validate: Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:49:22,334 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:49:22,350 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:49:22,362 [ERROR] validate: Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:49:22,366 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:49:22,381 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:49:22,381 [ERROR] validate: Target contains invalid classes: {'Expelled'}. Allowed: {'Enrolled', 'Graduate', 'Dropout'}
+2026-10-30 21:49:22,381 [CRITICAL] validate: Schema validation failed on column presence:
+Target contains invalid classes: {'Expelled'}. Allowed: {'Enrolled', 'Graduate', 'Dropout'}
+2026-10-30 21:49:22,396 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:49:22,404 [ERROR] validate: Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+2026-10-30 21:49:22,404 [ERROR] validate: Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:49:22,407 [CRITICAL] validate: Data validation failed with 2 error(s):
+Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:49:22,432 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:49:22,432 [ERROR] validate: Missing required column(s): ['Displaced']
+2026-10-30 21:49:22,432 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Displaced']
+2026-10-30 21:49:27,107 [INFO] predict: Inference completed successfully: Predicted='Dropout', Dropout Prob=92.00%, Tier='HIGH RISK (Immediate Intervention Required)'
+2026-10-30 21:49:28,073 [INFO] predict: Inference completed successfully: Predicted='Dropout', Dropout Prob=92.00%, Tier='HIGH RISK (Immediate Intervention Required)'
+2026-10-30 21:49:58,237 [INFO] predict: Inference completed successfully: Predicted='Dropout', Dropout Prob=92.00%, Tier='HIGH RISK (Immediate Intervention Required)'
+2026-10-30 21:50:55,346 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:50:55,365 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:50:55,481 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:50:55,494 [INFO] validate: Schema and data bounds validation PASSED successfully for 4424 records.
+2026-10-30 21:50:55,896 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:50:55,908 [INFO] validate: Schema and data bounds validation PASSED successfully for 50 records.
+2026-10-30 21:50:55,926 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:50:55,926 [ERROR] validate: Missing required column(s): ['Course']
+2026-10-30 21:50:55,930 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Course']
+2026-10-30 21:50:55,964 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:50:55,966 [ERROR] validate: Missing required 'Target' column for training/audit data.
+2026-10-30 21:50:55,966 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required 'Target' column for training/audit data.
+2026-10-30 21:50:55,991 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:50:56,002 [ERROR] validate: Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:50:56,004 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' has non-numeric dtype: str. Numeric/code expected.
+2026-10-30 21:50:56,095 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:50:56,109 [ERROR] validate: Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:50:56,117 [CRITICAL] validate: Data validation failed with 1 error(s):
+Column 'Age at enrollment' value out of bounds: observed range [18, 150], allowed range [15, bounds['max']].
+2026-10-30 21:50:56,170 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:50:56,176 [ERROR] validate: Target contains invalid classes: {'Expelled'}. Allowed: {'Enrolled', 'Graduate', 'Dropout'}
+2026-10-30 21:50:56,176 [CRITICAL] validate: Schema validation failed on column presence:
+Target contains invalid classes: {'Expelled'}. Allowed: {'Enrolled', 'Graduate', 'Dropout'}
+2026-10-30 21:50:56,218 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:50:56,226 [ERROR] validate: Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+2026-10-30 21:50:56,234 [ERROR] validate: Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:50:56,240 [CRITICAL] validate: Data validation failed with 2 error(s):
+Column 'Tuition fees up to date' value out of bounds: observed range [0, 5], allowed range [0, bounds['max']].
+Binary column 'Tuition fees up to date' has values outside {0, 1}: {np.int64(0), np.int64(1), np.int64(5)}
+2026-10-30 21:50:56,268 [INFO] validate: Starting schema and data validation (is_inference=False)...
+2026-10-30 21:50:56,273 [ERROR] validate: Missing required column(s): ['Displaced']
+2026-10-30 21:50:56,273 [CRITICAL] validate: Schema validation failed on column presence:
+Missing required column(s): ['Displaced']

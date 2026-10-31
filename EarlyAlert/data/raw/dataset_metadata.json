@@ -1,0 +1,14 @@
+{
+    "dataset_id": 697,
+    "dataset_name": "Predict Students' Dropout and Academic Success",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "download_date_utc": "2026-10-30T16:15:00.703274+00:00",
+    "source": "UCI Machine Learning Repository",
+    "reference_url": "https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success",
+    "version": "1.0",
+    "uci_metadata": {
+        "num_instances": 4424,
+        "num_features": 36,
+        "description": "A dataset created from a higher education institution (acquired from several disjoint databases) related to students enrolled in different undergraduate degrees, such as agronomy, design, education, nursing, journalism, management, social service, and technologies.\nThe dataset includes information known at the time of student enrollment (academic path, demographics, and social-economic factors) and the students' academic performance at the end of the first and second semesters. \nThe data is used to build classification models to predict students' dropout and academic sucess. The problem is formulated as a three category classification task, in which there is a strong imbalance towards one of the classes."
+    }
+}

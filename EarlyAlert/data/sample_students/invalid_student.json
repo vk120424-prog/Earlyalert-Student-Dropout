@@ -1,0 +1,9 @@
+{
+  "student_id": "STU-2026-INVALID-RECORD",
+  "Marital Status": 999,
+  "Application mode": 1,
+  "Course": 9500,
+  "Admission grade": 250.0,
+  "Age at enrollment": -5,
+  "Gender": 3
+}

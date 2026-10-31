@@ -1,0 +1,10 @@
+Slice Group,Subgroup Category,Sample Count,Sample %,Actual Dropouts,Predicted Dropouts,Macro-F1,Dropout Recall,Accuracy
+Gender,Female (0),570,64.5%,139,128,0.6956,0.7122,0.7632
+Gender,Male (1),315,35.6%,145,126,0.7088,0.7448,0.7429
+Scholarship Status,Non-Scholarship (0),680,76.9%,265,237,0.7041,0.7434,0.7338
+Scholarship Status,Scholarship Holder (1),205,23.2%,19,17,0.5871,0.5263,0.8293
+Tuition Fees Status,Tuition Overdue (0),109,12.3%,93,105,0.5084,1.0,0.8807
+Tuition Fees Status,Tuition Up to Date (1),776,87.8%,191,149,0.6772,0.5969,0.7384
+Age Band,<= 20 years,490,55.4%,107,83,0.6675,0.5888,0.7408
+Age Band,21 - 25 years,180,20.4%,58,53,0.7175,0.7241,0.7444
+Age Band,> 25 years,215,24.3%,119,118,0.7184,0.8571,0.8

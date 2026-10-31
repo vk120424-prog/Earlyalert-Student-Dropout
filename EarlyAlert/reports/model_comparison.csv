@@ -1,0 +1,5 @@
+Model Name,Best CV Macro-F1,Holdout Macro-F1,Holdout Accuracy,Dropout Recall,Enrolled Recall,Graduate Recall,Best Hyperparameters
+Random Forest,0.7217,0.7056,0.7559,0.7289,0.5283,0.8552,"{""classifier__class_weight"": ""balanced"", ""classifier__max_depth"": null, ""classifier__min_samples_split"": 2, ""classifier__n_estimators"": 100}"
+Logistic Regression (Balanced),0.7109,0.7005,0.7379,0.6831,0.6541,0.8032,"{""classifier__C"": 0.05, ""classifier__solver"": ""lbfgs""}"
+Hist Gradient Boosting,0.714,0.6933,0.7627,0.7254,0.4214,0.9095,"{""classifier__learning_rate"": 0.05, ""classifier__max_depth"": 6, ""classifier__max_iter"": 100}"
+Dummy (Most Frequent),0.222,0.2221,0.4994,0.0,0.0,1.0,{}

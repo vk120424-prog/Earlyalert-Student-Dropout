@@ -1,0 +1,42 @@
+Model,Trial Index,Parameters,Mean CV Macro-F1,Std CV Macro-F1,Mean Train Macro-F1,Rank
+Dummy (Most Frequent),1,"{""strategy"": ""most_frequent""}",0.22201,0.00019,0.22201,1
+Logistic Regression (Balanced),1,"{""classifier__C"": 0.05, ""classifier__solver"": ""lbfgs""}",0.71093,0.01632,0.74711,1
+Logistic Regression (Balanced),2,"{""classifier__C"": 0.5, ""classifier__solver"": ""lbfgs""}",0.70954,0.01302,0.7651,2
+Logistic Regression (Balanced),3,"{""classifier__C"": 1.0, ""classifier__solver"": ""lbfgs""}",0.70617,0.01458,0.7693,3
+Logistic Regression (Balanced),4,"{""classifier__C"": 5.0, ""classifier__solver"": ""lbfgs""}",0.70226,0.01427,0.772,4
+Random Forest,1,"{""classifier__class_weight"": null, ""classifier__max_depth"": 10, ""classifier__min_samples_split"": 2, ""classifier__n_estimators"": 100}",0.63678,0.02961,0.82575,21
+Random Forest,2,"{""classifier__class_weight"": null, ""classifier__max_depth"": 10, ""classifier__min_samples_split"": 2, ""classifier__n_estimators"": 200}",0.63388,0.03042,0.82592,24
+Random Forest,3,"{""classifier__class_weight"": null, ""classifier__max_depth"": 10, ""classifier__min_samples_split"": 5, ""classifier__n_estimators"": 100}",0.63409,0.02291,0.79981,23
+Random Forest,4,"{""classifier__class_weight"": null, ""classifier__max_depth"": 10, ""classifier__min_samples_split"": 5, ""classifier__n_estimators"": 200}",0.63445,0.02307,0.80034,22
+Random Forest,5,"{""classifier__class_weight"": null, ""classifier__max_depth"": 20, ""classifier__min_samples_split"": 2, ""classifier__n_estimators"": 100}",0.68186,0.01219,0.98925,13
+Random Forest,6,"{""classifier__class_weight"": null, ""classifier__max_depth"": 20, ""classifier__min_samples_split"": 2, ""classifier__n_estimators"": 200}",0.67644,0.0181,0.99027,16
+Random Forest,7,"{""classifier__class_weight"": null, ""classifier__max_depth"": 20, ""classifier__min_samples_split"": 5, ""classifier__n_estimators"": 100}",0.67501,0.01523,0.95657,17
+Random Forest,8,"{""classifier__class_weight"": null, ""classifier__max_depth"": 20, ""classifier__min_samples_split"": 5, ""classifier__n_estimators"": 200}",0.67469,0.02141,0.95944,18
+Random Forest,9,"{""classifier__class_weight"": null, ""classifier__max_depth"": null, ""classifier__min_samples_split"": 2, ""classifier__n_estimators"": 100}",0.67975,0.01615,1.0,14
+Random Forest,10,"{""classifier__class_weight"": null, ""classifier__max_depth"": null, ""classifier__min_samples_split"": 2, ""classifier__n_estimators"": 200}",0.67892,0.01909,1.0,15
+Random Forest,11,"{""classifier__class_weight"": null, ""classifier__max_depth"": null, ""classifier__min_samples_split"": 5, ""classifier__n_estimators"": 100}",0.67195,0.02099,0.96871,19
+Random Forest,12,"{""classifier__class_weight"": null, ""classifier__max_depth"": null, ""classifier__min_samples_split"": 5, ""classifier__n_estimators"": 200}",0.67022,0.02261,0.97085,20
+Random Forest,13,"{""classifier__class_weight"": ""balanced"", ""classifier__max_depth"": 10, ""classifier__min_samples_split"": 2, ""classifier__n_estimators"": 100}",0.70718,0.02588,0.85297,10
+Random Forest,14,"{""classifier__class_weight"": ""balanced"", ""classifier__max_depth"": 10, ""classifier__min_samples_split"": 2, ""classifier__n_estimators"": 200}",0.7084,0.02114,0.85387,9
+Random Forest,15,"{""classifier__class_weight"": ""balanced"", ""classifier__max_depth"": 10, ""classifier__min_samples_split"": 5, ""classifier__n_estimators"": 100}",0.70718,0.02436,0.83696,11
+Random Forest,16,"{""classifier__class_weight"": ""balanced"", ""classifier__max_depth"": 10, ""classifier__min_samples_split"": 5, ""classifier__n_estimators"": 200}",0.70556,0.02457,0.83642,12
+Random Forest,17,"{""classifier__class_weight"": ""balanced"", ""classifier__max_depth"": 20, ""classifier__min_samples_split"": 2, ""classifier__n_estimators"": 100}",0.72023,0.02162,0.99749,2
+Random Forest,18,"{""classifier__class_weight"": ""balanced"", ""classifier__max_depth"": 20, ""classifier__min_samples_split"": 2, ""classifier__n_estimators"": 200}",0.71985,0.02402,0.9983,4
+Random Forest,19,"{""classifier__class_weight"": ""balanced"", ""classifier__max_depth"": 20, ""classifier__min_samples_split"": 5, ""classifier__n_estimators"": 100}",0.71091,0.02549,0.97559,8
+Random Forest,20,"{""classifier__class_weight"": ""balanced"", ""classifier__max_depth"": 20, ""classifier__min_samples_split"": 5, ""classifier__n_estimators"": 200}",0.71902,0.0247,0.97835,5
+Random Forest,21,"{""classifier__class_weight"": ""balanced"", ""classifier__max_depth"": null, ""classifier__min_samples_split"": 2, ""classifier__n_estimators"": 100}",0.72172,0.01825,0.99985,1
+Random Forest,22,"{""classifier__class_weight"": ""balanced"", ""classifier__max_depth"": null, ""classifier__min_samples_split"": 2, ""classifier__n_estimators"": 200}",0.71761,0.02161,1.0,7
+Random Forest,23,"{""classifier__class_weight"": ""balanced"", ""classifier__max_depth"": null, ""classifier__min_samples_split"": 5, ""classifier__n_estimators"": 100}",0.7184,0.02127,0.9855,6
+Random Forest,24,"{""classifier__class_weight"": ""balanced"", ""classifier__max_depth"": null, ""classifier__min_samples_split"": 5, ""classifier__n_estimators"": 200}",0.71993,0.02377,0.98742,3
+Hist Gradient Boosting,1,"{""classifier__learning_rate"": 0.05, ""classifier__max_depth"": 6, ""classifier__max_iter"": 100}",0.71399,0.02278,0.90474,1
+Hist Gradient Boosting,2,"{""classifier__learning_rate"": 0.05, ""classifier__max_depth"": 6, ""classifier__max_iter"": 150}",0.71258,0.02632,0.94938,3
+Hist Gradient Boosting,3,"{""classifier__learning_rate"": 0.05, ""classifier__max_depth"": 10, ""classifier__max_iter"": 100}",0.70631,0.01926,0.96765,9
+Hist Gradient Boosting,4,"{""classifier__learning_rate"": 0.05, ""classifier__max_depth"": 10, ""classifier__max_iter"": 150}",0.70551,0.01823,0.99586,10
+Hist Gradient Boosting,5,"{""classifier__learning_rate"": 0.05, ""classifier__max_depth"": null, ""classifier__max_iter"": 100}",0.71164,0.01634,0.97864,4
+Hist Gradient Boosting,6,"{""classifier__learning_rate"": 0.05, ""classifier__max_depth"": null, ""classifier__max_iter"": 150}",0.71087,0.01577,0.99751,7
+Hist Gradient Boosting,7,"{""classifier__learning_rate"": 0.1, ""classifier__max_depth"": 6, ""classifier__max_iter"": 100}",0.70501,0.023,0.98003,11
+Hist Gradient Boosting,8,"{""classifier__learning_rate"": 0.1, ""classifier__max_depth"": 6, ""classifier__max_iter"": 150}",0.69764,0.02126,0.9981,12
+Hist Gradient Boosting,9,"{""classifier__learning_rate"": 0.1, ""classifier__max_depth"": 10, ""classifier__max_iter"": 100}",0.71106,0.01562,0.99985,6
+Hist Gradient Boosting,10,"{""classifier__learning_rate"": 0.1, ""classifier__max_depth"": 10, ""classifier__max_iter"": 150}",0.71132,0.01784,1.0,5
+Hist Gradient Boosting,11,"{""classifier__learning_rate"": 0.1, ""classifier__max_depth"": null, ""classifier__max_iter"": 100}",0.7132,0.01408,1.0,2
+Hist Gradient Boosting,12,"{""classifier__learning_rate"": 0.1, ""classifier__max_depth"": null, ""classifier__max_iter"": 150}",0.70849,0.01656,1.0,8
